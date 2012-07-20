@@ -34,11 +34,23 @@ class Vector
     self
   end
 
+  def length
+    square_length ** 0.5
+  end
+
+  def square_length
+    self * self
+  end
+
   def self.UNIT_Y
     @@UNIT_Y ||= Vector.new(0, 1)
   end
 
   def self.UNIT_X
     @@UNIT_X ||= Vector.new(1, 0)
+  end
+
+  def self.ZERO
+    @@ZERO ||= Vector.new(0, 0)
   end
 end
