@@ -4,11 +4,11 @@ class Meteor
   def initialize(window)
     @wnd = window
     @circle = Circle.new(Vector.new(rand(800), rand(600)), 20)
-    angle = rand(Math::PI*2)
+    angle = rand(0...Math::PI*2)
     @vel = Vector.new(Math::cos(angle)*5, Math::sin(angle)*5)
     @image = Gosu::Image.new(window, "content/sprites/meteor.bmp", false)
-    @angle = rand(Math::PI*2)
-    @ang_vel = rand(Math::PI*2)
+    @angle = rand(0...Math::PI*2)
+    @ang_vel = rand(0...Math::PI*2)
   end
 
   def update
