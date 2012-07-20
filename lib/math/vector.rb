@@ -42,6 +42,16 @@ class Vector
     self * self
   end
 
+  def normalize!
+    x, y = @x/length, @y/length
+    @x, @y = x, y
+    self
+  end
+
+  def normalize
+    self.clone.normalize!
+  end
+
   def self.UNIT_Y
     @@UNIT_Y ||= Vector.new(0, 1)
   end
