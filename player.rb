@@ -1,8 +1,8 @@
-require "./lib/math/vector.rb"
+%w(vector circle).each { |s| require "./lib/math/#{s}.rb" }
 
 class Player
   def initialize(window, x, y)
-    @pos = Vector.new(x, y)
+    @circle = Circle.new(Vector.new(x, y), 4)
     @vel = Vector.new(0, 0)
     @angle = 0
     @image = Gosu::Image.new(window, "content/sprites/shipSprite.bmp", false)
@@ -17,14 +17,14 @@ class Player
   end
 
   def draw
-    @image.draw_rot(@pos.x, @pos.y, 1, @angle)
+    @image.draw_rot(@circle.position.x, @circle.position.y, 1, @angle)
   end
 
   private
   def move
-    @pos += @vel
-    @pos.x %= 800
-    @pos.y %= 600
+    @circle.position += @vel
+    @circle.position.x %= 800
+    @circle.position.y %= 600
 
     @vel *= 0.95
   end
