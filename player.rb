@@ -12,7 +12,8 @@ class Player
   def update
     @angle -= 4.5 if button_down?(Gosu::KbLeft) || button_down?(Gosu::GpLeft)
     @angle += 4.5 if button_down?(Gosu::KbRight) || button_down?(Gosu::GpRight)
-    @vel -= Vector.UNIT_Y.rotate(Math::PI*@angle/180) if button_down?(Gosu::KbUp) || button_down?(Gosu::GpButton0)
+    @vel -= Vector.UNIT_Y.rotate(Math::PI*@angle/180) if button_down?(Gosu::KbUp) || button_down?(Gosu::GpUp)
+    @vel += Vector.UNIT_Y.rotate(Math::PI*@angle/180) if button_down?(Gosu::KbDown) || button_down?(Gosu:: GpDown)
     move
   end
 
