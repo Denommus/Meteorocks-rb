@@ -7,23 +7,22 @@ class GameWindow < Gosu::Window
   def initialize
     super 800, 600, false
     self.caption = "Meteorocks"
-    @player = Player.new(self, 400, 300)
-    @meteors = Array.new
+    @objects = Array.new
+    @objects << Player.new(self, 400, 300)
     3.times do
-      @meteors << Meteor.new(self)
+      @objects << Meteor.new(self)
     end
   end
 
   def update
-    @player.update
-    @meteors.each do |m|
+    exit if !@objects.select { |m| m.is_a?(Meteor) && m.circle.intersects_circle(@objects[0].circle) }.empty?
+    @objects.each do |m|
       m.update
     end
   end
 
   def draw
-    @player.draw
-    @meteors.each do |m|
+    @objects.each do |m|
       m.draw
     end
   end

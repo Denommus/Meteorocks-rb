@@ -1,6 +1,7 @@
 %w(vector circle).each { |s| require "./lib/math/#{s}.rb" }
 
 class Player
+  attr_reader :circle
   def initialize(window, x, y)
     @circle = Circle.new(Vector.new(x, y), 4)
     @vel = Vector.new(0, 0)

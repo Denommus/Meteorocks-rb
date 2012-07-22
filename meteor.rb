@@ -1,6 +1,7 @@
 %w(vector circle).each { |s| require "./lib/math/#{s}.rb" }
 
 class Meteor
+  attr_reader :circle
   def initialize(window)
     @wnd = window
     @circle = Circle.new(Vector.new(rand(800), rand(600)), 20)
