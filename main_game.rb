@@ -2,29 +2,22 @@
 
 require 'gosu'
 %w(player meteor).each { |s| require "./#{s}.rb" }
+require "./screens/stage1.rb"
 
 class GameWindow < Gosu::Window
+  attr_writer :screen
   def initialize
     super 800, 600, false
     self.caption = "Meteorocks"
-    @objects = Array.new
-    @objects << Player.new(self, 400, 300)
-    3.times do
-      @objects << Meteor.new(self)
-    end
+    @screen = Stage1.new(self)
   end
 
   def update
-    exit if !@objects.select { |m| m.is_a?(Meteor) && m.circle.intersects_circle(@objects[0].circle) }.empty?
-    @objects.each do |m|
-      m.update
-    end
+    @screen.update
   end
 
   def draw
-    @objects.each do |m|
-      m.draw
-    end
+    @screen.draw
   end
 end
 
