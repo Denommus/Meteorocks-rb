@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
 
 require 'gosu'
+require 'chingu'
 %w(player meteor).each { |s| require "./#{s}.rb" }
 require "./screens/stage1.rb"
 
-class GameWindow < Gosu::Window
+class GameWindow < Chingu::Window
   attr_writer :screen
   def initialize
     super 800, 600, false

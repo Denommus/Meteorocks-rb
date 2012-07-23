@@ -3,11 +3,12 @@
 class Player
   attr_reader :circle
   def initialize(window, x, y)
-    @circle = Circle.new(Vector.new(x, y), 4)
+    @circle = Circle.new(Vector.new(x, y), 25)
     @vel = Vector.new(0, 0)
     @angle = 0
     @image = Gosu::Image.new(window, "content/sprites/shipSprite.bmp", false)
     @wnd = window
+    @y_center = 28.5/65
   end
 
   def update
@@ -19,7 +20,7 @@ class Player
   end
 
   def draw
-    @image.draw_rot(@circle.position.x, @circle.position.y, 1, @angle)
+    @image.draw_rot(@circle.position.x, @circle.position.y, 1, @angle, 0.5, @y_center)
   end
 
   private
