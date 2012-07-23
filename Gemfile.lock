@@ -1,12 +1,21 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    chingu (0.8.1)
+      crack
+      gosu (>= 0.7.25)
+      rest-client
+    crack (0.3.1)
     gosu (0.7.45)
     gosu (0.7.45-x86-mingw32)
+    mime-types (1.19)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
 
 PLATFORMS
   ruby
   x86-mingw32
 
 DEPENDENCIES
+  chingu
   gosu
