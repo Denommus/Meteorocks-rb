@@ -6,7 +6,7 @@ require 'chingu'
 require "./screens/stage1.rb"
 
 class GameWindow < Chingu::Window
-  attr_writer :screen
+  attr_accessor :screen
   def initialize
     super 800, 600, false
     self.caption = "Meteorocks"

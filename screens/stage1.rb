@@ -1,4 +1,6 @@
 class Stage1
+  attr_accessor :objects
+
   def initialize(window)
     @wnd = window
     @objects = Array.new

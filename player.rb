@@ -1,4 +1,5 @@
 %w(vector circle).each { |s| require "./lib/math/#{s}.rb" }
+require './shoot.rb'
 
 class Player
   attr_reader :circle
@@ -9,6 +10,7 @@ class Player
     @image = Gosu::Image.new(window, "content/sprites/shipSprite.bmp", false)
     @wnd = window
     @y_center = 28.5/65
+    @space_pressed
   end
 
   def update
@@ -16,6 +18,12 @@ class Player
     @angle += 4.5 if button_down?(Gosu::KbRight) || button_down?(Gosu::GpRight)
     @vel -= Vector.UNIT_Y.rotate(Math::PI*@angle/180) if button_down?(Gosu::KbUp) || button_down?(Gosu::GpUp)
     @vel += Vector.UNIT_Y.rotate(Math::PI*@angle/180) if button_down?(Gosu::KbDown) || button_down?(Gosu:: GpDown)
+    if button_down?(Gosu::KbSpace) && !@space_pressed
+      @space_pressed = true
+      Shoot.new(@wnd, @angle, @circle.position)
+    elsif !button_down?(Gosu::KbSpace)
+      @space_pressed = false
+    end
     move
   end
 
